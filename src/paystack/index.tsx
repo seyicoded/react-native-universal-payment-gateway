@@ -19,6 +19,7 @@ export default function Paystack({
   otherObjectFromOfficialDoc = {},
   onCancel= ()=>{},
   onShow,
+  onCallback
 
 }: PaystackProps): JSX.Element {
 
@@ -112,6 +113,21 @@ export default function Paystack({
       <WebView onNavigationStateChange={navState =>{
         console.log(navState)
         if((navState.url == 'about:blank') && (navState.canGoForward == true)){
+          onShow(false);
+          onCancel();
+          show = false
+          _setShow(false)
+        }
+
+        if(((navState.url).includes(callbackUrl)) ){
+          // extract data
+          let str = (navState.url).replace(callbackUrl, '');
+          str = str.replace("?trxref=", '');
+          onCallback({
+            tnxref: str
+          })
+          // onCallback
+
           onShow(false);
           onCancel();
           show = false

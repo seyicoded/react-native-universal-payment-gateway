@@ -33,8 +33,9 @@ const App = () => {
         amount={'8000'}
         paystackSecretKey={'sk_test_ac8971390ed43c9b29074c23f4bdaddccc24b865'}
         channels={['card']}
-        callbackUrl={'https://www.sctidev.com/success'}
+        callbackUrl={'https://www.sctidev.com/callback'}
         show={showPaystack}
+        onCallback={(e)=>{}}
         onShow={setShowPaystack} />
 
       <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>

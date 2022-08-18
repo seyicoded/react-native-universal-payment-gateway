@@ -7,7 +7,8 @@ export type PaystackProps = {
   callbackUrl: string;
   channels?: []|any;
   otherObjectFromOfficialDoc?: Object|any|{};
-  onCancel?: Function,
+  onCancel?: Function;
+  onCallback: (props: Object)=>any;
   onShow: any
 }
 
