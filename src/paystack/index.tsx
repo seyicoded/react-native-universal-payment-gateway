@@ -27,6 +27,7 @@ export default function Paystack({
 
   useEffect(()=>{
     // get url
+    if(!show){return }
     (async()=>{
       try{
         const body = {
@@ -38,27 +39,31 @@ export default function Paystack({
           ...otherObjectFromOfficialDoc
         }
         
-        axios.defaults.headers.common['Authorization'] = `Bearer ${paystackSecretKey}`
-        axios.defaults.headers.post['Authorization'] = `Bearer ${paystackSecretKey}`
-        axios.defaults.headers.post['Content-Type'] = 'application/json; charset=utf-8'
+        
 
         const _res: any = await axios.post('https://api.paystack.co/transaction/initialize', body, {
           headers: {
-            "Authorization" : `Bearer: ${paystackSecretKey}`,
-            'Content-Type': 'application/json'
+            "Authorization" : "Bearer "+paystackSecretKey,
+            'Content-Type': "application/json"
           },
         })
   
-        console.log(_res)
+        console.log("auth_url: "+_res.data.data.authorization_url)
+        setUrl(_res.data.data.authorization_url)
+        _sethasLoaded(true)
+
+        if( (_res.data.data.authorization_url) == undefined ){
+          _setShow(false)
+          show = false
+        }
       }catch(e){
         console.log(e)
         console.log(e.response.data)
-        console.log(e.response)
+        _setShow(false)
+        show = false
+        // console.log(e.response)
       }
 
-      setTimeout(()=>{
-        console.log(axios.defaults.headers.post)
-      }, 2)
     })()
   }, [show])
 
@@ -98,7 +103,7 @@ export default function Paystack({
           </View>
         ))
       }
-      <WebView style={{ flex: 1, }} javaScriptEnabled={true} onLoadEnd={()=> _setIsLoading(false)} source={{ html: url }} />
+      <WebView style={{ flex: 1, }} javaScriptEnabled={true} onLoadEnd={()=> _setIsLoading(false)} source={{ uri: url }} />
     </Popup>
   )
 }
