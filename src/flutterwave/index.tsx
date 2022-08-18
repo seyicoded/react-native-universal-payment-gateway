@@ -128,7 +128,7 @@ export default function Flutterwave({
           str = str.replace("?tx_ref=", '');
           onCallback({
             tnxref: `${tnxRef}`,
-            instruction: "payment recieved but we advise you validate using the rest validate api or our validate function"
+            instruction: "payment recieved and already validated"
           })
           // onCallback
 

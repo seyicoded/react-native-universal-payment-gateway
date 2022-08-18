@@ -59,18 +59,34 @@ const App = () => {
           show={showFlutterwave}
           onCallback={async (e)=>{
             console.log("data returns is ",e)
-
-            // to validate, returns {status: srring, data: {data} }
-            // status is success for success on paystack
-
-            // await Gateway.validatePaystackPayment({
-            //   apiKey: 'sk_test_ac8971390ed43c9b29074c23f4bdaddccc24b865',
-            //   tnxRef: e.tnxref
-            // })
             
           }}
           onShow={setShowFlutterwave}
         />
+
+        <Gateway.universal
+          paymentGatewayUrlRequestUrlUrl={'https://api.flutterwave.com/v3/payments'}
+          tRefObject={
+            {
+              tx_ref: "TNXRE_F124243642"
+            }
+          }
+          headerContent={{ 
+            "Authorization" : "Bearer TNXRE_F124243642",
+            'Content-Type': "application/json"
+           }}
+          email='opadonuseyi01@gmail.com'
+          amount={'8000'}
+          currency={"NGN"}
+          universalSecretKey={'FLWSECK_TEST-4e2a106fa0b255596d20f29c9d41775f-X'}
+          channels={['card']}
+          callbackUrl={'https://www.sctidev.com/callback'}
+          show={showUniversal}
+          onCallback={async (e)=>{
+            console.log("data returns is ",e)
+            
+          }}
+          onShow={setShowUniversal} />
 
       <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
 

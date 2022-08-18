@@ -35,6 +35,22 @@ export type FlutterProps = {
 }
 
 export type UniversalProps = {
-  show: boolean;
+  show: boolean; // to show 
   loaderColor?: string;
+  universalSecretKey: string;
+  email: string;
+  amount: string;
+  paymentGatewayUrlRequestUrlUrl: string;
+  tRefObject: object;
+  headerContent: Object|any;
+  callbackUrl: string;
+  channels?: []|any;
+  currency?: string;
+  otherObjectFromOfficialDoc?: Object|any|{};
+  onCancel?: Function;
+  onCallback: (props: {
+    tnxref: string;
+    instruction: string;
+  })=>any;
+  onShow: any
 }
