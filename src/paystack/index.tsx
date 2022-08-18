@@ -19,11 +19,10 @@ export default function Paystack({
   otherObjectFromOfficialDoc = {},
   onCancel= ()=>{},
   onShow,
-  onCallback
+  onCallback,
+  currency
 
 }: PaystackProps): JSX.Element {
-
-  console.log(show)
 
   const [_show, _setShow] = useState(true)
   const [_isLoading, _setIsLoading] = useState(true)
@@ -41,7 +40,8 @@ export default function Paystack({
           reference: tnxRef,
           callback_url: callbackUrl,
           channels,
-          ...otherObjectFromOfficialDoc
+          ...otherObjectFromOfficialDoc,
+          currency
         }
         
         

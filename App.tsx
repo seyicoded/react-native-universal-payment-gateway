@@ -31,17 +31,46 @@ const App = () => {
       <Gateway.payStack
         email='opadonuseyi01@gmail.com'
         amount={'8000'}
+        currency={"NGN"}
         paystackSecretKey={'sk_test_ac8971390ed43c9b29074c23f4bdaddccc24b865'}
         channels={['card']}
         callbackUrl={'https://www.sctidev.com/callback'}
         show={showPaystack}
-        onCallback={(e)=>{
+        onCallback={async (e)=>{
           console.log("data returns is ",e)
 
-          // to validate
+          // to validate, returns {status: srring, data: {data} }
+          // status is success for success on paystack
+          await Gateway.validatePaystackPayment({
+            apiKey: 'sk_test_ac8971390ed43c9b29074c23f4bdaddccc24b865',
+            tnxRef: e.tnxref
+          })
           
         }}
         onShow={setShowPaystack} />
+
+        <Gateway.flutterWave
+          email='opadonuseyi01@gmail.com'
+          amount={'8000'}
+          currency={"NGN"}
+          flutterwaveSecretKey={'FLWSECK_TEST-4e2a106fa0b255596d20f29c9d41775f-X'}
+          channels={['card']}
+          callbackUrl={'https://www.sctidev.com/callback'}
+          show={showFlutterwave}
+          onCallback={async (e)=>{
+            console.log("data returns is ",e)
+
+            // to validate, returns {status: srring, data: {data} }
+            // status is success for success on paystack
+
+            // await Gateway.validatePaystackPayment({
+            //   apiKey: 'sk_test_ac8971390ed43c9b29074c23f4bdaddccc24b865',
+            //   tnxRef: e.tnxref
+            // })
+            
+          }}
+          onShow={setShowFlutterwave}
+        />
 
       <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
 
