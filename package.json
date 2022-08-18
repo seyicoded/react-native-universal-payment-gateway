@@ -1,7 +1,27 @@
 {
-  "name": "universalPaymentGateway",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-native-universal-payment-gateway",
+  "version": "1.0.0",
+  "private": false,
+  "description": "A react native library developed to unify the tedious process of having diversity of packages for various payment providers, of this is our goal to solve ",
+  "main": "./src/index.tsx",
+  "keywords": [
+    "react-native",
+    "paystack",
+    "flutterwave",
+    "payment",
+    "gateway",
+    "payment gateway",
+    "webview",
+    "expo",
+    "mobile",
+    "ios",
+    "android",
+    "web"
+  ],
+  "bugs": {
+    "url": "https://github.com/seyicoded/react-native-universal-payment-gateway/issues"
+  },
+  "homepage": "https://github.com/seyicoded/react-native-universal-payment-gateway/blob/master/README.md",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -12,14 +32,11 @@
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-webview": "*"
+    "react-native-webview": "*",
+    "axios": "*"
   },
   "dependencies": {
-    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
-    "axios": "^0.27.2",
-    "react": "18.0.0",
-    "react-native": "0.69.4",
-    "react-native-webview": "^11.23.0"
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -32,6 +49,10 @@
     "babel-jest": "^26.6.3",
     "eslint": "^7.32.0",
     "jest": "^26.6.3",
+    "axios": "^0.27.2",
+    "react": "18.0.0",
+    "react-native": "0.69.4",
+    "react-native-webview": "^11.23.0",
     "metro-react-native-babel-preset": "^0.70.3",
     "react-test-renderer": "18.0.0",
     "typescript": "^4.7.4"
@@ -46,5 +67,10 @@
       "json",
       "node"
     ]
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seyicoded/react-native-universal-payment-gateway"
+  },
+  "author": "Opadonu Oluwaseyi <opadonuseyi01@gmail.com>"
 }
