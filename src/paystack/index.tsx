@@ -16,9 +16,13 @@ export default function Paystack({
   amount,
   callbackUrl,
   channels,
-  otherObjectFromOfficialDoc = {}
+  otherObjectFromOfficialDoc = {},
+  onCancel= ()=>{},
+  onShow,
 
 }: PaystackProps): JSX.Element {
+
+  console.log(show)
 
   const [_show, _setShow] = useState(true)
   const [_isLoading, _setIsLoading] = useState(true)
@@ -49,8 +53,9 @@ export default function Paystack({
         })
   
         console.log("auth_url: "+_res.data.data.authorization_url)
-        setUrl(_res.data.data.authorization_url)
         _sethasLoaded(true)
+        setUrl('http://cancel')
+        setUrl(_res.data.data.authorization_url)
 
         if( (_res.data.data.authorization_url) == undefined ){
           _setShow(false)
@@ -69,6 +74,7 @@ export default function Paystack({
 
   useEffect(()=>{
     _setShow(show)
+    show = show;
   }, [show])
 
   if(!show){
@@ -103,7 +109,15 @@ export default function Paystack({
           </View>
         ))
       }
-      <WebView style={{ flex: 1, }} javaScriptEnabled={true} onLoadEnd={()=> _setIsLoading(false)} source={{ uri: url }} />
+      <WebView onNavigationStateChange={navState =>{
+        console.log(navState)
+        if((navState.url == 'about:blank') && (navState.canGoForward == true)){
+          onShow(false);
+          onCancel();
+          show = false
+          _setShow(false)
+        }
+      }} scalesPageToFit style={{ flex: 1, }} javaScriptEnabled={true} onLoadEnd={()=> _setIsLoading(false)} source={{ uri: url }} />
     </Popup>
   )
 }

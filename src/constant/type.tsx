@@ -7,6 +7,8 @@ export type PaystackProps = {
   callbackUrl: string;
   channels?: []|any;
   otherObjectFromOfficialDoc?: Object|any|{};
+  onCancel?: Function,
+  onShow: any
 }
 
 export type FlutterProps = {
