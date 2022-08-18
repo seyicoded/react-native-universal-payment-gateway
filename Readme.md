@@ -22,15 +22,15 @@
 to utilize simple install
 
 ```diff
-npm install <package-name>
+npm install react-native-universal-payment-gateway
 ```
 
 ```diff
-yarn add <package-name>
+yarn add react-native-universal-payment-gateway
 ```
 
 ```diff
-expo install <package-name>
+expo install react-native-universal-payment-gateway
 ```
 
 **Not Using Expo, no problem**
@@ -58,7 +58,7 @@ then re-build
 import package
 
 ```typescript
-import Gateway from '<package-name>'
+import Gateway from 'react-native-universal-payment-gateway'
 ```
 
 **SAMPLE UTILIZATION**
