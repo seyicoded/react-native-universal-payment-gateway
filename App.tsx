@@ -72,7 +72,7 @@ const App = () => {
             }
           }
           headerContent={{ 
-            "Authorization" : "Bearer TNXRE_F124243642",
+            "Authorization" : "Bearer FLWSECK_TEST-4e2a106fa0b255596d20f29c9d41775f-X",
             'Content-Type': "application/json"
            }}
           email='opadonuseyi01@gmail.com'
