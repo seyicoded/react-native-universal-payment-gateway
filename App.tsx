@@ -35,7 +35,9 @@ const App = () => {
         channels={['card']}
         callbackUrl={'https://www.sctidev.com/callback'}
         show={showPaystack}
-        onCallback={(e)=>{}}
+        onCallback={(e)=>{
+          console.log("data returns is ",e)
+        }}
         onShow={setShowPaystack} />
 
       <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>

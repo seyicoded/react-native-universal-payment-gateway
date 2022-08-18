@@ -60,13 +60,15 @@ export default function Paystack({
 
         if( (_res.data.data.authorization_url) == undefined ){
           _setShow(false)
-          show = false
+          onShow(false);
+          // show = false
         }
       }catch(e){
         console.log(e)
         console.log(e.response.data)
         _setShow(false)
-        show = false
+        onShow(false);
+        // show = false
         // console.log(e.response)
       }
 
@@ -75,7 +77,7 @@ export default function Paystack({
 
   useEffect(()=>{
     _setShow(show)
-    show = show;
+    // show = show;
   }, [show])
 
   if(!show){
@@ -83,9 +85,9 @@ export default function Paystack({
   }
 
 
-  if(!(_show)){
-    return (<></>)
-  }
+  // if(!(_show)){
+  //   return (<></>)
+  // }
 
   if((!_hasLoaded)){
     return (
@@ -115,7 +117,7 @@ export default function Paystack({
         if((navState.url == 'about:blank') && (navState.canGoForward == true)){
           onShow(false);
           onCancel();
-          show = false
+          // show = false
           _setShow(false)
         }
 
@@ -124,13 +126,14 @@ export default function Paystack({
           let str = (navState.url).replace(callbackUrl, '');
           str = str.replace("?trxref=", '');
           onCallback({
-            tnxref: str
+            tnxref: str,
+            instruction: "payment recieved but we advise you validate using the rest validate api or our validate function"
           })
           // onCallback
 
           onShow(false);
           onCancel();
-          show = false
+          // show = false
           _setShow(false)
         }
       }} scalesPageToFit style={{ flex: 1, }} javaScriptEnabled={true} onLoadEnd={()=> _setIsLoading(false)} source={{ uri: url }} />
