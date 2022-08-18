@@ -7,22 +7,6 @@ import axios from 'axios'
 
 const tnxRef = (new Date()).getTime();
 
-type validatePayamentPropsType = {
-  apiKey: string;
-  tnxRef: string;
-}
-
-type validatePayamentReturnType = {
-  status: boolean;
-}
-
-export function validatePayment ({apiKey, tnxRef}: validatePayamentPropsType): validatePayamentReturnType{
-  
-  return {
-    status: false
-  }
-}
-
 // show
 export default function Paystack({
   show,

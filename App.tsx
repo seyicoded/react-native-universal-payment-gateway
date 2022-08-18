@@ -37,6 +37,9 @@ const App = () => {
         show={showPaystack}
         onCallback={(e)=>{
           console.log("data returns is ",e)
+
+          // to validate
+          
         }}
         onShow={setShowPaystack} />
 
