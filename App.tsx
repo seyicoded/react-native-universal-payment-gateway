@@ -1,112 +1,94 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
 
-import React from 'react';
-// import type {Node} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+// import {Flutterwave, Paystack, Universal} from './src/index'
+import Gateway from './src/index'
 
-const Section = ({children, title}) => {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-};
+// console.log(Gateway.flutterWave)
+
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
+  const [showPaystack, setShowPaystack] = useState(false)
+  const [showFlutterwave, setShowFlutterwave] = useState(false)
+  const [showUniversal, setShowUniversal] = useState(false)
+  
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+    <SafeAreaView style={{ flex: 1 }}>
+      {/* 
+      * key note
+      * always place the components from this library on your outtermost instance component
+      */}
+
+      <Gateway.payStack
+        email='opadonuseyi01@gmail.com'
+        amount={'8000'}
+        paystackSecretKey={'sk_test_ac8971390ed43c9b29074c23f4bdaddccc24b865'}
+        channels={['card']}
+        callbackUrl={'https://www.sctidev.com/success'}
+        show={showPaystack} />
+
+      <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+
+          <Text style={[styles.title]}>
+            UNIVERSAL PAYMENT GATEWAY LIBRARY
+          </Text>
+
+          <TouchableOpacity onPress={()=> setShowPaystack(true)} style={[styles.btnContainer]}>
+            <Text style={[styles.button]}>click for paystack</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={()=> setShowFlutterwave(true)} style={[styles.btnContainer]}>
+            <Text style={[styles.button]}>click for flutterwave</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={()=> setShowUniversal(true)} style={[styles.btnContainer]}>
+            <Text style={[styles.button]}>click to utilize universal </Text>
+          </TouchableOpacity>
+
+          <Text style={[styles.foot]}>
+            &copy; seyicoded
+          </Text>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
+  title: {
+    position: 'absolute',
+    top: '14%',
     fontWeight: '700',
+    fontSize: 26,
+    textAlign: 'center',
   },
+  btnContainer: {
+    width: '100%',
+    alignItems: 'center'
+  },
+  button: {
+    color: 'white',
+    backgroundColor: 'rgba(0, 0, 250, 0.6)',
+    width: '80%',
+    marginBottom: 30,
+    paddingVertical: 14,
+    textAlign: 'center',
+    borderRadius: 8,
+    overflow: 'hidden'
+  },
+  foot: {
+    position: 'absolute',
+    bottom: '3%',
+    opacity: 0.4
+  }
 });
 
 export default App;

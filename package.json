@@ -15,6 +15,8 @@
     "react-native-webview": "*"
   },
   "dependencies": {
+    "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "axios": "^0.27.2",
     "react": "18.0.0",
     "react-native": "0.69.4",
     "react-native-webview": "^11.23.0"
