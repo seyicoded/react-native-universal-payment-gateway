@@ -72,5 +72,6 @@
     "type": "git",
     "url": "git+https://github.com/seyicoded/react-native-universal-payment-gateway"
   },
-  "author": "Opadonu Oluwaseyi <opadonuseyi01@gmail.com>"
+  "author": "Opadonu Oluwaseyi <opadonuseyi01@gmail.com>",
+  "license": "MIT"
 }
