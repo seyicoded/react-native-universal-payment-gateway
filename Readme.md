@@ -13,7 +13,7 @@
 
 ![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/animations/5f97dfdb5ac66f98d7d970b6cf199014736f179388978484.gif)
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/a306626553ab9a348ef83c1bde66a9778e8b757e4464cf38.png)
+![](https://drive.google.com/file/d/1NLhPEH90B2lx0E8CnChFSYFKyfNv310w/view?usp=sharing)
 
 ---
 
