@@ -11,7 +11,9 @@
 *   Library available for both **android** and **ios**
 *   compatible with plain react-native and expo
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/animations/5f97dfdb5ac66f98d7d970b6cf199014736f179388978484.gif)
+![](https://github.com/seyicoded/react-native-universal-payment-gateway/blob/main/assets/universal/paystack.gif?raw=true)
+
+![](https://github.com/seyicoded/react-native-universal-payment-gateway/blob/main/assets/universal/flutterwave.gif?raw=true)
 
 ![](https://github.com/seyicoded/react-native-universal-payment-gateway/blob/main/assets/universal/photo.png?raw=true)
 
