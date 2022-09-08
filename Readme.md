@@ -2,7 +2,7 @@
 
 *   📣 We are proud to announce the release of our universal gateway package for both android and ios on RN
 *   💡 Package initially was JS but utilizes TS for all its implementation to give it users free access to type per implementation.
-*   🙏 If you have a question, feel free to open a new issue as the package will be regularly maintained.
+*   🙏 If you have a question, feel free to open a new issue as the package will be regularly maintained...
 
 ---
 
