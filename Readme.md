@@ -1,6 +1,7 @@
 ### Announcements
 
 *   📣 We are proud to announce the release of our universal gateway package for both android and ios on RN
+*   💡 We've just added a logically payment webview what does exactly what it's supposed too, feel free to try it out [New].
 *   💡 Package initially was JS but utilizes TS for all its implementation to give it users free access to type per implementation.
 *   🙏 If you have a question, feel free to open a new issue as the package will be regularly maintained...
 
@@ -70,6 +71,7 @@ const App = () => {
 const [showPaystack, setShowPaystack] = useState(false)
 const [showFlutterwave, setShowFlutterwave] = useState(false)
 const [showUniversal, setShowUniversal] = useState(false)
+const [showWebView, setShowWebView] = useState(false)
 
 return (
 <SafeAreaView style={{ flex: 1 }}>
@@ -117,6 +119,17 @@ console.log("data returns is ",e)
 onShow={setShowFlutterwave}
 />
 
+<Gateway.webview
+          paymentUrl={'https://api.flutterwave.com/v3/payments'}
+          // callback uri from your init api request to create
+          callbackUrl={'https://www.sctidev.com/callback'}
+          show={showWebView}
+          onCallback={async (e)=>{
+            console.log("data returns is ",e)
+            
+          }}
+          onShow={setShowWebView} />
+
 
 <Gateway.universal
 paymentGatewayUrlRequestUrlUrl={'https://api.flutterwave.com/v3/payments'}
@@ -159,6 +172,10 @@ UNIVERSAL PAYMENT GATEWAY LIBRARY
 <TouchableOpacity onPress={()=> setShowFlutterwave(true)} style={[styles.btnContainer]}>
 <Text style={[styles.button]}>click for flutterwave</Text>
 </TouchableOpacity>
+
+<TouchableOpacity onPress={()=> setShowWebView(true)} style={[styles.btnContainer]}>
+            <Text style={[styles.button]}>click to load logically payment webview </Text>
+          </TouchableOpacity>
 
 
 <TouchableOpacity onPress={()=> setShowUniversal(true)} style={[styles.btnContainer]}>

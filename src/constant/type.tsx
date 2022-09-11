@@ -54,3 +54,17 @@ export type UniversalProps = {
   })=>any;
   onShow: any
 }
+
+export type WebViewProps = {
+  show: boolean; // to show 
+  loaderColor?: string;
+  paymentUrl: string;
+  callbackUrl: string;
+  onCancel?: Function;
+  onCallback: (props: {
+    tnxref: string;
+    url?: string;
+    instruction: string;
+  })=>any;
+  onShow: any
+}

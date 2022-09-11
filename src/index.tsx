@@ -9,14 +9,16 @@
 import payStack from './paystack/index';
 import flutterWave from './flutterwave/index';
 import universal from './universal/index';
+import webview from './webview/index';
 import {validatePaystackPayment, validatePayamentPropsType, validatePayamentReturnType} from './verify';
-import {FlutterProps, PaystackProps, UniversalProps} from './constant/type'
+import {FlutterProps, PaystackProps, UniversalProps, WebViewProps} from './constant/type'
 
 type _returnProps = {
     payStack: (val: PaystackProps)=>JSX.Element|any;
     flutterWave: (val: FlutterProps)=>JSX.Element|any;
     universal: (val: UniversalProps)=>JSX.Element|any;
-    validatePaystackPayment: (val: validatePayamentPropsType) => Promise<validatePayamentReturnType>
+    webview: (val: WebViewProps) => JSX.Element|any;
+    validatePaystackPayment: (val: validatePayamentPropsType) => Promise<validatePayamentReturnType>;
 }
 
 const _return: _returnProps = {
@@ -24,6 +26,7 @@ const _return: _returnProps = {
     flutterWave,
     universal,
     validatePaystackPayment,
+    webview
 };
 
 export default _return;

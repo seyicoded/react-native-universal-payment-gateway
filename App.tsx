@@ -20,6 +20,7 @@ const App = () => {
   const [showPaystack, setShowPaystack] = useState(false)
   const [showFlutterwave, setShowFlutterwave] = useState(false)
   const [showUniversal, setShowUniversal] = useState(false)
+  const [showWebView, setShowWebView] = useState(false)
   
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -63,6 +64,17 @@ const App = () => {
           }}
           onShow={setShowFlutterwave}
         />
+        
+        <Gateway.webview
+          paymentUrl={'https://paystack.com/pay/fv2buf03yi'}
+          // callback uri from your init api request to create
+          callbackUrl={'https://www.sctidev.com/callback'}
+          show={showWebView}
+          onCallback={async (e)=>{
+            console.log("data returns is ",e)
+            
+          }}
+          onShow={setShowWebView} />
 
         <Gateway.universal
           paymentGatewayUrlRequestUrlUrl={'https://api.flutterwave.com/v3/payments'}
@@ -100,6 +112,10 @@ const App = () => {
 
           <TouchableOpacity onPress={()=> setShowFlutterwave(true)} style={[styles.btnContainer]}>
             <Text style={[styles.button]}>click for flutterwave</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={()=> setShowWebView(true)} style={[styles.btnContainer]}>
+            <Text style={[styles.button]}>click to load logically payment webview </Text>
           </TouchableOpacity>
 
           <TouchableOpacity onPress={()=> setShowUniversal(true)} style={[styles.btnContainer]}>
