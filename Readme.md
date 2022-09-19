@@ -114,6 +114,9 @@ callbackUrl={'https://www.sctidev.com/callback'}
 show={showFlutterwave}
 onCallback={async (e)=>{
 console.log("data returns is ",e)
+if(e.tnxref == "/pay_canceled=true"){
+              return
+            }
 
 }}
 onShow={setShowFlutterwave}
@@ -126,7 +129,10 @@ onShow={setShowFlutterwave}
           show={showWebView}
           onCallback={async (e)=>{
             console.log("data returns is ",e)
-            
+            if(e.tnxref == "/pay_canceled=true"){
+              return
+            }
+
           }}
           onShow={setShowWebView} />
 

@@ -37,7 +37,7 @@ export const styles = StyleSheet.create({
       flex: 1,
       justifyContent: "center",
       alignItems: "center",
-      marginTop: 10,
+      marginTop: 0,
       paddingTop: 30,
       backgroundColor: 'rgba(0, 0, 0, 0.4)'
     },
