@@ -1,6 +1,6 @@
 {
   "name": "react-native-universal-payment-gateway",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "private": false,
   "description": "A react native library developed to unify the tedious process of having diversity of packages for various payment providers, of this is our goal to solve ",
   "main": "./src/index.tsx",
