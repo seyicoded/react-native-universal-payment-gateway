@@ -25,15 +25,15 @@
 to utilize simple install
 
 ```diff
-npm install react-native-universal-payment-gateway
+npm install react-native-universal-payment-gateway react-native-webview
 ```
 
 ```diff
-yarn add react-native-universal-payment-gateway
+yarn add react-native-universal-payment-gateway react-native-webview
 ```
 
 ```diff
-expo install react-native-universal-payment-gateway
+expo install react-native-universal-payment-gateway react-native-webview
 ```
 
 **Not Using Expo, no problem**
