@@ -33,7 +33,9 @@ export default function Paystack({
         // console.log("auth_url: "+_res.data.data.authorization_url)
         _sethasLoaded(true)
         setUrl('http://cancel')
-        setUrl(paymentUrl)
+        setTimeout(()=>{
+          setUrl(paymentUrl)
+        }, 100)
 
       }catch(e){
         console.log(e)
