@@ -32,10 +32,10 @@ export default function Paystack({
         
         // console.log("auth_url: "+_res.data.data.authorization_url)
         _sethasLoaded(true)
-        setUrl('http://cancel')
+        setUrl('https://sleepy-river-58406.herokuapp.com/')
         setTimeout(()=>{
           setUrl(paymentUrl)
-        }, 100)
+        }, 300)
 
       }catch(e){
         console.log(e)
@@ -63,22 +63,26 @@ export default function Paystack({
   //   return (<></>)
   // }
 
-  if((!_hasLoaded)){
-    return (
-      <Popup>
-        {
-          (_isLoading && (
-            <View style={ styles.loaderContainer }>
-              <ActivityIndicator color={loaderColor} />
-            </View>
-          ))
-        }
-      </Popup>
-    )
-  }
+  // if((!_hasLoaded)){
+  //   return (
+  //     <Popup>
+  //       {
+  //         (_isLoading && (
+  //           <View style={ styles.loaderContainer }>
+  //             <ActivityIndicator color={loaderColor} />
+  //           </View>
+  //         ))
+  //       }
+  //     </Popup>
+  //   )
+  // }
 
   return (
-    <Popup>
+    <Popup end={()=>{
+        onShow(false);
+        onCancel();
+        _setShow(false)
+    }}>
       {
         (_isLoading && (
           <View style={ styles.loaderContainer }>
@@ -86,9 +90,9 @@ export default function Paystack({
           </View>
         ))
       }
-      <WebView onNavigationStateChange={navState =>{
+      <WebView key={"0"} onNavigationStateChange={navState =>{
         console.log(navState)
-        if((navState.url == 'about:blank') && (navState.canGoForward == true)){
+        if(((navState.url == 'about:blank') || (navState.url == "https://sleepy-river-58406.herokuapp.com/")) && (navState.canGoForward == true)){
           onShow(false);
           onCancel();
           // show = false

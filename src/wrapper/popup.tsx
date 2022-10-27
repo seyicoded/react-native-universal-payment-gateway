@@ -1,16 +1,21 @@
 import { View, BackHandler, Text, Modal, StyleSheet } from 'react-native'
 import React, {useState, useEffect} from 'react'
 
-export default function Popup({children}) {
+export default function Popup({children, end}) {
     const [show, setShow] = useState(true)
     BackHandler.addEventListener('hardwareBackPress', ()=>{
-        setShow(false)
+        setShow(false);
+        try{
+          end();
+        }catch(e){}
         return false;
     })
 
     useEffect(()=>{
         return ()=>{
-            BackHandler.removeEventListener('hardwareBackPress', ()=>{return true});
+            BackHandler.removeEventListener('hardwareBackPress', ()=>{
+              return true;
+            });
         }
     }, [])
 
@@ -21,11 +26,37 @@ export default function Popup({children}) {
             visible={show}
             onRequestClose={() => {
             console.log('')
+            try{
+              end();
+            }catch(e){}
+            }}
+            onDismiss={()=>{
+              try{
+                end();
+              }catch(e){}
             }}
         >
             <View style={styles.centeredView}>
             <View style={styles.modalView}>
                 {children}
+
+                <Text
+                style={{
+                  backgroundColor: 'black',
+                  color: 'white',
+                  borderRadius: 14,
+                  overflow: 'hidden',
+                  position: 'absolute',
+                  padding: 12,
+                  bottom: 0,
+                  right: 0,
+                  margin: 12
+                }}
+                onPress={()=>{
+                  try{
+                    end();
+                  }catch(e){}
+                }}>End Session</Text>
             </View>
             </View>
         </Modal>

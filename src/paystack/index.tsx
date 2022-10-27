@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import { View, Text, ActivityIndicator } from 'react-native'
 import {PaystackProps} from '../constant/type'
 import WebView from 'react-native-webview'
@@ -27,7 +27,8 @@ export default function Paystack({
   const [_show, _setShow] = useState(true)
   const [_isLoading, _setIsLoading] = useState(true)
   const [_hasLoaded, _sethasLoaded] = useState(false)
-  const [url, setUrl] = useState('')
+  const [url, setUrl] = useState('https://sleepy-river-58406.herokuapp.com/')
+  const WebViewRef = useRef(null);
 
   useEffect(()=>{
     // get url
@@ -55,8 +56,14 @@ export default function Paystack({
   
         console.log("auth_url: "+_res.data.data.authorization_url)
         _sethasLoaded(true)
-        setUrl('http://cancel')
-        setUrl(_res.data.data.authorization_url)
+        setUrl('https://sleepy-river-58406.herokuapp.com/');
+        // setUrl("about:blank");
+        setTimeout(()=>{
+          setUrl('https://sleepy-river-58406.herokuapp.com/');
+          WebViewRef.current.injectJavaScript(`window.location.href = 'https://hhh.com'`)
+          WebViewRef.current.injectJavaScript(`window.location.href = '${_res.data.data.authorization_url}'`)
+          // setUrl(_res.data.data.authorization_url)
+        }, 600)
 
         if( (_res.data.data.authorization_url) == undefined ){
           _setShow(false)
@@ -89,19 +96,19 @@ export default function Paystack({
   //   return (<></>)
   // }
 
-  if((!_hasLoaded)){
-    return (
-      <Popup>
-        {
-          (_isLoading && (
-            <View style={ styles.loaderContainer }>
-              <ActivityIndicator color={loaderColor} />
-            </View>
-          ))
-        }
-      </Popup>
-    )
-  }
+  // if((!_hasLoaded)){
+  //   return (
+  //     <Popup>
+  //       {
+  //         (_isLoading && (
+  //           <View style={ styles.loaderContainer }>
+  //             <ActivityIndicator color={loaderColor} />
+  //           </View>
+  //         ))
+  //       }
+  //     </Popup>
+  //   )
+  // }
 
   return (
     <Popup>
@@ -114,7 +121,7 @@ export default function Paystack({
       }
       <WebView onNavigationStateChange={navState =>{
         console.log(navState)
-        if((navState.url == 'about:blank') && (navState.canGoForward == true)){
+        if(((navState.url == 'about:blank') || (navState.url == "https://sleepy-river-58406.herokuapp.com/")) && (navState.canGoForward == true)){
           onShow(false);
           onCancel();
           // show = false
@@ -136,7 +143,20 @@ export default function Paystack({
           // show = false
           _setShow(false)
         }
-      }} scalesPageToFit style={{ flex: 1, }} javaScriptEnabled={true} onLoadEnd={()=> _setIsLoading(false)} source={{ uri: url }} />
+      }} scalesPageToFit style={{ flex: 1, }} javaScriptEnabled={true} onLoadEnd={()=> _setIsLoading(false)} source={{ uri: url, }} injectedJavaScript={`
+        // window.onbeforeunload = function (e){
+        //   document.write('.')
+        // }
+      `} ref={_ref=>{
+        WebViewRef.current = _ref;
+        // _ref.injectJavaScript("")
+        // _ref.
+        // _ref.injectJavaScript(`
+        //   window.onbeforeunload = function (e){
+        //     document.write('.')
+        //   }
+        // `)
+      }} />
     </Popup>
   )
 }

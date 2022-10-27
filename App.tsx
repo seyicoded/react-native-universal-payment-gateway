@@ -66,7 +66,7 @@ const App = () => {
         />
         
         <Gateway.webview
-          paymentUrl={'https://paystack.com/pay/fv2buf03yi'}
+          paymentUrl={'https://checkout.paystack.com/y2i5ntv7tp8wfw9'}
           // callback uri from your init api request to create
           callbackUrl={'https://www.sctidev.com/callback'}
           show={showWebView}
